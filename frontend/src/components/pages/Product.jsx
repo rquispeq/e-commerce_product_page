@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Header from "../molecules/Header"
 import ProductImage from "../organisms/ProductImage"
 import axios from "axios"
+import { formatPrice } from "../../helpers/numbers"
 
 const Product = () => {
   const [product, setProduct] = useState()
@@ -21,11 +22,27 @@ const Product = () => {
         <div className="product-image w-4/12">
           <ProductImage product={product} />
         </div>
-        <div className="product-info">
-          <h1>Product Name</h1>
-          <p>Product Description</p>
-          <p>$100.00</p>
-          <button>Add to Cart</button>
+        <div className="product-info font-medium flex flex-col gap-4">
+          <span className="text-orange-600 uppercase tracking-widest">{product.brand}</span>
+          <h1 className="text-4xl font-bold">{product.name}</h1>
+          <p className="text-gray-500">{product.description}</p>
+          <div className="price-details flex flex-col gap-2">
+            <div className="flex items-center gap-4">
+              <div className="final-price text-4xl font-bold">{formatPrice(product.final_price)}</div>
+              <div className="bg-orange-200 text-orange-500 px-2 rounded">{product.percent_descount}%</div>
+            </div>
+            <div className=" line-through text-gray-400">
+              {formatPrice(product.original_price)}
+            </div>
+          </div>
+          <div className="actions flex">
+            <div className="set-amout">
+              <button>-</button>
+              <input type="text" value="1" />
+              <button>+</button>
+            </div>
+            <button>Add to Cart</button>
+          </div>
         </div>
       </div>
     </div>
