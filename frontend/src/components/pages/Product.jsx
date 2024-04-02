@@ -1,18 +1,20 @@
+import { useEffect, useState } from "react"
 import Header from "../molecules/Header"
 import ProductImage from "../organisms/ProductImage"
+import axios from "axios"
 
 const Product = () => {
-  const product = {
-    name: "Product Name",
-    description: "Product Description",
-    price: 100.00,
-    images: [
-      "https://via.placeholder.com/150",
-      "https://via.placeholder.com/150",
-      "https://via.placeholder.com/150",
-    ],
-  }
-  return (
+  const [product, setProduct] = useState()
+  useEffect(() => {
+    // Fetch product data from API
+    axios.get("http://localhost:3001/products/2674848").then((response) => {
+      console.log(response)
+      setProduct(response.data)
+    }).catch((error) => {
+      console.error(error)
+    })
+  }, [])
+  return ( product &&
     <div className="container m-auto">
       <Header />
       <div className="container-product flex justify-between gap-20 px-16">
