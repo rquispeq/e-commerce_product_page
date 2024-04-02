@@ -20,12 +20,12 @@ const ProductImage = ({ product }) => {
         navigation={false}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2 mb-6"
+        className="mySwiper2 mb-6 rounded-2xl"
       >
         {product.images.map((image, index) => {
           return (
-            <SwiperSlide key={index}>
-              <img src={image} alt="product" className="w-full rounded-2xl " />
+            <SwiperSlide key={index} className="cursor-pointer">
+              <img src={image} alt="product" className="w-full rounded-2xl" />
             </SwiperSlide>
           )
         })}
@@ -35,7 +35,7 @@ const ProductImage = ({ product }) => {
         onSwiper={setThumbsSwiper}
         loop={false}
         spaceBetween={10}
-        slidesPerView={ 4}
+        slidesPerView={4}
         freeMode={false}
         watchSlidesProgress={false}
         modules={[FreeMode, Navigation, Thumbs]}
@@ -43,7 +43,7 @@ const ProductImage = ({ product }) => {
         navigation={true}
       >
         {product.images.map((image, index) => (
-          <SwiperSlide key={index} className="flex gap-2">
+          <SwiperSlide key={index} className="flex gap-2 cursor-pointer">
             <img src={image} alt="product" className="rounded-2xl" />
           </SwiperSlide>
         ))}
