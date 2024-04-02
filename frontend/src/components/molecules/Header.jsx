@@ -2,7 +2,7 @@ import Logo from "../atoms/Logo"
 
 const Header = () => {
   return (
-    <header className="border-b border-gray-300 mb-24 text-gray-400 font-medium ">
+    <header className="border-b border-gray-300 mb-24 text-gray-400 font-medium py-11">
       <div className="content flex items-center justify-between ">
         <div className="content-left flex items-center gap-16">
           <Logo />
