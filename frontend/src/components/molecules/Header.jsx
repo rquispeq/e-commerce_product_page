@@ -44,9 +44,7 @@ const Header = () => {
         </div>
         <div className="content-right">
           <ul className="flex gap-8 items-center">
-            <li className="relative">
-              <CartModal />
-            </li>
+            <CartModal />
             <li>
               <a href="">
                 <img src={user.avatar} className="w-10" alt="" />

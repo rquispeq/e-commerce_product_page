@@ -10,7 +10,7 @@ const CartModal = () => {
 
 
   return (
-    <>
+    <li className="relative">
       <span className="cursor-pointer relative" onClick={toggleModal}>
         <CartIcon />
       </span>
@@ -24,7 +24,7 @@ const CartModal = () => {
           </div>
         </div>
       ) }
-    </>
+    </li>
   )
 }
 
