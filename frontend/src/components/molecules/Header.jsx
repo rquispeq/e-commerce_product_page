@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Logo from "../atoms/Logo"
 import axios from "axios"
+import CartModal from "./CartModal"
 
 const Header = () => {
   const [user, setUser] = useState(null)
@@ -43,8 +44,8 @@ const Header = () => {
         </div>
         <div className="content-right">
           <ul className="flex gap-8 items-center">
-            <li>
-              <a href="">Carrito</a>
+            <li className="relative">
+              <CartModal />
             </li>
             <li>
               <a href="">
