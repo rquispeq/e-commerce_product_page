@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Header from "../molecules/Header"
 import ProductImage from "../organisms/ProductImage"
 import axios from "axios"
 import { formatPrice } from "../../helpers/numbers"
+import { CartContext } from "../../contexts/CartContext"
 
 const Product = () => {
   const [product, setProduct] = useState()
   const [quantity, setQuantity] = useState(1)
+  const { state, dispatch } = useContext(CartContext)
   useEffect(() => {
     // Fetch product data from API
     axios
@@ -27,6 +29,30 @@ const Product = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1)
     }
+  }
+
+  const handleAddCart = () => {
+    dispatch(
+      {
+        type: "ADD_TO_CART",
+        payload: {
+          id: product.id,
+          name: product.name,
+          price: product.final_price,
+          quantity: quantity,
+          image: product.images[0],
+        },
+      }
+    )
+  }
+
+  const handleRemoveCart = () => {
+    dispatch(
+      {
+        type: "REMOVE_FROM_CART",
+        payload: product.id
+      }
+    )
   }
   return (
     product && (
@@ -78,9 +104,13 @@ const Product = () => {
                     +
                   </button>
                 </div>
-                <button className="bg-orange-600 px-20 rounded text-white shadow-2xl ">
+                {!state.cart.find( p => p.id === product.id) ? <button className="bg-orange-600 px-20 rounded text-white shadow-2xl " onClick={handleAddCart}>
                   Add to Cart
-                </button>
+                </button>:
+                <button className="bg-orange-600 px-20 rounded text-white shadow-2xl " onClick={handleRemoveCart}>
+                Remove to Cart
+              </button>
+                }
               </div>
             </div>
           </div>
