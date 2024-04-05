@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import Logo from "../atoms/Logo"
 import axios from "axios"
 import CartModal from "./CartModal"
+import MenuButton from "../atoms/MenuButton"
+import CloseButton from "../atoms/CloseButton"
 
 const Header = () => {
   const [user, setUser] = useState(null)
@@ -17,13 +19,23 @@ const Header = () => {
       })
   }, [])
 
+  const openMenu = () => {
+    let menu = document.getElementById("menu")
+    menu.classList.toggle("-left-3/4")
+    menu.classList.toggle("left-0")
+  }
+
   return ( user &&
-    <header className="border-b border-gray-300 mb-24 text-gray-400 font-medium py-11">
+    <header className="border-b border-gray-300 md:mb-24 md:mbtext-black  font-medium py-6 md:py-11">
       <div className="content flex items-center justify-between ">
-        <div className="content-left flex items-center gap-16">
+        <div className="content-left flex items px-6 gap-6">
+          {/* <button className="md:hidden " onClick={openMenu}>menu</button> */}
+          <MenuButton handle={openMenu} />
           <Logo />
-          <nav>
-            <ul className="flex gap-6">
+          <nav id="menu" className="absolute bg-white min-h-full z-20 top-0 md:text-gray-400 p-8 w-3/4 -left-3/4 md:static md:bg-none md:min-h-0 md:z-0 lg:p-0 md:w-0">
+            {/* <button className="pb-12 md:hidden" onClick={openMenu}>cerrar</button> */}
+            <CloseButton onClick={openMenu} />
+            <ul className="flex gap-6 flex-col justify-center md:flex-row md:justify-normal">
               <li className="hover:text-gray-600 transition-colors duration-300">
                 <a href="/">Collections</a>
               </li>
