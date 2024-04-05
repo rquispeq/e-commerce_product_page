@@ -56,20 +56,20 @@ const Product = () => {
   }
   return (
     product && (
-      <div className="container m-auto">
+      <div className="container m-auto ">
         <Header />
-        <div className="container-product flex justify-between gap-20 px-16">
-          <div className="product-image w-4/12">
+        <div className="container-product flex flex-col lg:flex-row lg:justify-between lg:gap-20 lg:px-16">
+          <div className="product-image lg:w-4/12 w-full">
             <ProductImage product={product} />
           </div>
-          <div className="product-info font-medium flex flex-col gap-4 mt-16">
+          <div className="product-info font-medium flex flex-col gap-4 mt-16 px-6 lg:px-0">
             <span className="text-orange-600 uppercase tracking-widest">
               {product.brand}
             </span>
             <div className="flex gap-9 flex-col">
               <h1 className="text-4xl font-bold">{product.name}</h1>
               <p className="text-gray-500 ">{product.description}</p>
-              <div className="price-details flex flex-col gap-2">
+              <div className="price-details flex lg:flex-col gap-2 items-center justify-between lg:items-baseline lg:justify-normal">
                 <div className="flex items-center gap-4">
                   <div className="final-price text-4xl font-bold">
                     {formatPrice(product.final_price)}
@@ -82,8 +82,8 @@ const Product = () => {
                   {formatPrice(product.original_price)}
                 </div>
               </div>
-              <div className="actions flex gap-4">
-                <div className="set-amout flex justify-center bg-gray-100 rounded text-lg">
+              <div className="actions flex gap-4 lg:flex-row flex-col">
+                <div className="set-amout flex justify-between lg:justify-center bg-gray-100 rounded text-lg">
                   <button
                     className="text-orange-600 font-bold px-3 py-2"
                     onClick={decrease}
@@ -104,7 +104,7 @@ const Product = () => {
                     +
                   </button>
                 </div>
-                {!state.cart.find( p => p.id === product.id) ? <button className="bg-orange-600 px-20 rounded text-white shadow-2xl " onClick={handleAddCart}>
+                {!state.cart.find( p => p.id === product.id) ? <button className="bg-orange-600 lg:px-20 py-4 lg:py-0 rounded text-white shadow-2xl " onClick={handleAddCart}>
                   Add to Cart
                 </button>:
                 <button className="bg-orange-600 px-20 rounded text-white shadow-2xl " onClick={handleRemoveCart}>

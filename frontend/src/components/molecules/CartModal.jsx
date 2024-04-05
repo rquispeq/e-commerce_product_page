@@ -22,7 +22,7 @@ const CartModal = () => {
       </span>
       {isModalOpen && (
         <div className="absolute shadow-2xl left-2/4 transform -translate-x-2/4 mt-4 z-10 bg-white ">
-          <div className="title border-b p-4 border-b-gray-300 w-72">Cart</div>
+          <div className="title border-b p-4 border-b-gray-300 text-black w-72">Cart</div>
           <div className="cart-container flex gap-3 flex-col items-center justify-center min-h-28 p-5">
             {state.cart.length > 0 ? (
               <>

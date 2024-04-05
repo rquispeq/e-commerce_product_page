@@ -20,12 +20,12 @@ const ProductImage = ({ product }) => {
         navigation={false}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2 mb-6 rounded-2xl"
+        className="mySwiper2 mb-6 lg:rounded-2xl"
       >
         {product.images.map((image, index) => {
           return (
             <SwiperSlide key={index} className="cursor-pointer">
-              <img src={image} alt="product" className="w-full rounded-2xl" />
+              <img src={image} alt="product" className="w-full lg:rounded-2xl" />
             </SwiperSlide>
           )
         })}
