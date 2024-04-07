@@ -13,7 +13,7 @@ const CartModal = () => {
   }
 
   return (
-    <li className="relative">
+    <li className="md:relative">
       <span className="cursor-pointer relative" onClick={toggleModal}>
         <CartIcon />
         <span className="text-white bg-red-600 rounded-full flex justify-center items-center w-4 max-h-4 p-3 absolute -top-4 -right-4">
@@ -21,8 +21,8 @@ const CartModal = () => {
         </span>
       </span>
       {isModalOpen && (
-        <div className="absolute shadow-2xl left-2/4 transform -translate-x-2/4 mt-4 z-10 bg-white ">
-          <div className="title border-b p-4 border-b-gray-300 text-black w-72">Cart</div>
+        <div className="cart-modal absolute shadow-2xl md:left-2/4 md:transform md:-translate-x-2/4 md:mt-4 z-10 bg-white left-1 mx-2 mt-10">
+          <div className="title border-b p-4 border-b-gray-300 text-black md:min-w-72">Cart</div>
           <div className="cart-container flex gap-3 flex-col items-center justify-center min-h-28 p-5">
             {state.cart.length > 0 ? (
               <>
