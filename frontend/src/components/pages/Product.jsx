@@ -93,7 +93,7 @@ const Product = () => {
                   </button>
                   <input
                     type="text"
-                    className="w-14 px-1 text-center bg-gray-100"
+                    className="w-14 px-1 text-center bg-gray-100 outline-none"
                     value={quantity}
                     onChange={(e) => setQuantity(e.target.value)}
                   />
