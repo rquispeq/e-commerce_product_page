@@ -1,13 +1,24 @@
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { FreeMode, Navigation, Thumbs } from "swiper/modules"
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
+import "../../assets/styles/index.css"
+import ProductImageViewer from "../molecules/ProductImageViewer";
+
 const ProductImage = ({ product }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
+  const [isViewerOpen, setIsViewerOpen] = useState(false)
+  const images = product.images
+  const openImageViewer = useCallback((index) => {
+    setIsViewerOpen(true);
+  }, []);
 
+  const closeImageViewer = () => {
+    setIsViewerOpen(false);
+  };
   return (
     <>
       <Swiper
@@ -25,7 +36,7 @@ const ProductImage = ({ product }) => {
         {product.images.map((image, index) => {
           return (
             <SwiperSlide key={index} className="cursor-pointer">
-              <img src={image} alt="product" className="w-full lg:rounded-2xl" />
+              <img src={image} alt="product" onClick={() => openImageViewer(index)} className="w-full lg:rounded-2xl" />
             </SwiperSlide>
           )
         })}
@@ -48,6 +59,10 @@ const ProductImage = ({ product }) => {
           </SwiperSlide>
         ))}
       </Swiper>
+      {isViewerOpen && (
+
+        <ProductImageViewer images={images} onclick= {closeImageViewer}/>
+      )}
     </>
   )
 }

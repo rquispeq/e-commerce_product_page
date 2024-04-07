@@ -58,7 +58,7 @@ const Header = () => {
           <ul className="flex gap-8 items-center">
             <CartModal />
             <li>
-              <a href="">
+              <a href="/">
                 <img src={user.avatar} className="w-10" alt="" />
               </a>
             </li>
