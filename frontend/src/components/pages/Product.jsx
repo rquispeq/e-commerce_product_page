@@ -4,6 +4,7 @@ import ProductImage from "../organisms/ProductImage"
 import axios from "axios"
 import { formatPrice } from "../../helpers/numbers"
 import { CartContext } from "../../contexts/CartContext"
+import { simulateProduct } from "../../helpers/local_api"
 
 const Product = () => {
   const [product, setProduct] = useState()
@@ -17,7 +18,8 @@ const Product = () => {
         setProduct(response.data)
       })
       .catch((error) => {
-        console.error(error)
+        const product = simulateProduct()
+        setProduct(product)
       })
   }, [])
 

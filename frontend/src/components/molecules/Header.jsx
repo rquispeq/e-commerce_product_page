@@ -4,6 +4,7 @@ import axios from "axios"
 import CartModal from "./CartModal"
 import MenuButton from "../atoms/MenuButton"
 import CloseButton from "../atoms/CloseButton"
+import { simulateUser } from "../../helpers/local_api"
 
 const Header = () => {
   const [user, setUser] = useState(null)
@@ -15,7 +16,8 @@ const Header = () => {
         setUser(response.data)
       })
       .catch((error) => {
-        console.error(error)
+        const user = simulateUser()
+        setUser(user)
       })
   }, [])
 
